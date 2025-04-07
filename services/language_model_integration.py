@@ -1,36 +1,34 @@
 import os
-import requests
 import logging
+import google.generativeai as genai
+from dotenv import load_dotenv
+
+# Load environment variables from the .env file
+load_dotenv()
 
 logger = logging.getLogger(__name__)
 
+# Retrieve the API key and model name from environment variables
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+GEMINI_API_MODEL = os.getenv("GEMINI_API_MODEL", "gemini-2.0-flash")
+
+if not GEMINI_API_KEY:
+    logger.error("GEMINI_API_KEY is not set in the environment.")
+
+# Configure the Gemini API using only the API key
+genai.configure(api_key=GEMINI_API_KEY)
+
+# Instantiate the model using the model name
+model = genai.GenerativeModel(GEMINI_API_MODEL)
+
 def gemini_generate(prompt: str) -> str:
     """
-    Calls the Gemini API with the provided prompt and returns the generated text.
+    Calls the Gemini API using the provided prompt and returns the generated text.
+    This function uses only the API key and model name from the environment.
     """
-    api_key = os.getenv("GEMINI_API_KEY")
-    api_url = os.getenv("GEMINI_API_URL", "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent")
-    
-    headers = {
-        "Content-Type": "application/json"
-    }
-    params = {
-        "key": api_key
-    }
-    payload = {
-        "contents": [{"parts": [{"text": prompt}]}],
-        "generationConfig": {
-            "maxOutputTokens": 512,
-            "temperature": 0.7
-        }
-    }
-    
     try:
-        response = requests.post(api_url, headers=headers, params=params, json=payload)
-        response.raise_for_status()
-        data = response.json()
-        generated_text = data.get("candidates", [{}])[0].get("content", {}).get("parts", [{}])[0].get("text", "")
-        return generated_text
+        response = model.generate_content(prompt)
+        return response.text
     except Exception as e:
         logger.error("Error calling Gemini API", exc_info=True)
         return f"Error: {str(e)}"
