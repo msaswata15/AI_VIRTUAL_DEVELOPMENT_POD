@@ -1,0 +1,7 @@
+High-Level Business Requirements:
+
+1. The system shall allow users to register, login, and manage their profiles securely.
+2. The system shall enable project managers to create, assign, and track tasks.
+3. The system shall generate detailed and structured user stories from high-level business requirements.
+4. The system shall facilitate the creation of software designs, source code, and test cases via agent orchestration.
+5. The system shall provide real-time status updates and quality checks for all project artifacts.
