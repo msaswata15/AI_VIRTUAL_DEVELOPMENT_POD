@@ -308,7 +308,10 @@ AGENT_ROLES = {
     "Business Analyst Agent": "is responsible for creating detailed and structured user stories from high-level business requirements.",
     "Design Agent": "is responsible for generating precise software design artifacts and corresponding flow charts based on the user stories.",
     "Developer Agent": "is responsible for producing well-indented, production-quality source code and providing a clear folder structure for the project.",
-    "Testing Agent": "is responsible for generating comprehensive test cases and delivering definitive test execution results in an industry-standard format."
+    "Testing Agent": "is responsible for generating comprehensive test cases and delivering definitive test execution results in an industry-standard format.",
+    "Security Analyst Agent": "is responsible for reviewing the source code for vulnerabilities and potential threats, returning a comprehensive security analysis.",
+    "Optimizer Agent": "is responsible for identifying performance bottlenecks and suggesting code optimizations for better efficiency."
+
 }
 
 def clean_text(text: str) -> str:
@@ -405,7 +408,7 @@ def main():
         if not business_requirements.strip():
             st.error("Please enter valid business requirements.")
         else:
-            st.info("Orchestrating the agents... Please wait.")
+            st.info("Coordinating the agents... Please wait.")
             orchestrator = AgentOrchestrator()
             results = orchestrator.orchestrate_pipeline(business_requirements)
             st.success("Workflow Execution Completed!")
@@ -413,6 +416,7 @@ def main():
             st.session_state["master_output"] = results
     
     # Always display the master output if available.
+    # Inside the block where st.session_state["master_output"] is handled
     if "master_output" in st.session_state:
         master = st.session_state["master_output"]
         user_stories = clean_text(master.get("user_stories", ""))
@@ -420,13 +424,17 @@ def main():
         code_result = clean_text(master.get("code", ""))
         test_cases = clean_text(master.get("test_cases", ""))
         test_results = clean_text(master.get("test_results", ""))
+        security_analysis = clean_text(master.get("security_report", ""))
+        performance_optimization = clean_text(master.get("performance_report", ""))
         
         display_artifact("Generated User Stories", user_stories)
         display_artifact("Generated Design Artifact", design_artifact)
         display_artifact("Generated Source Code", code_result, language='python')
         display_artifact("Generated Test Cases", test_cases)
         display_artifact("Test Execution Results", test_results)
-    
+        display_artifact("Security Analysis Report", security_analysis)
+        display_artifact("Performance Optimization Suggestions", performance_optimization)
+
     st.markdown("### Chat with an Agent")
     agent_choice = st.selectbox("Choose an Agent", list(st.session_state.conversation_history.keys()))
     user_message = st.text_input("Your Message to the Agent", placeholder="Type your message here...")
