@@ -4,6 +4,8 @@ from agents.business_analyst_agent import BusinessAnalystAgent
 from agents.design_agent import DesignAgent
 from agents.developer_agent import DeveloperAgent
 from agents.testing_agent import TestingAgent
+from agents.security_analyst_agent import SecurityAnalystAgent
+from agents.performance_optimizer_agent import PerformanceOptimizerAgent
 
 class TestAgents(unittest.TestCase):
     
@@ -36,6 +38,18 @@ class TestAgents(unittest.TestCase):
         agent = TestingAgent()
         result = agent.execute_tests("Source code sample", "Test cases sample")
         self.assertEqual(result, "executed tests summary")
+    @patch("services.language_model_integration.gemini_generate", return_value="security report")
+    def test_security_analyst_analyze_security(self, mock_gemini):
+        agent = SecurityAnalystAgent()
+        result = agent.analyze_security("Sample source code")
+        self.assertEqual(result, "security report")
+
+    @patch("services.language_model_integration.gemini_generate", return_value="performance report")
+    def test_performance_optimizer_optimize_performance(self, mock_gemini):
+        agent = PerformanceOptimizerAgent()
+        result = agent.optimize_performance("Sample source code")
+        self.assertEqual(result, "performance report")
+
 
 if __name__ == '__main__':
     unittest.main()
