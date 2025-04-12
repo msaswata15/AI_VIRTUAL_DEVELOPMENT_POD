@@ -38,7 +38,10 @@ class TestAgents(unittest.TestCase):
         agent = TestingAgent()
         result = agent.execute_tests("Source code sample", "Test cases sample")
         self.assertEqual(result, "executed tests summary")
+<<<<<<< HEAD
     
+=======
+>>>>>>> 8c98a45e5eb9065ca0c0e17ed1257c0f24e89ea5
     @patch("services.language_model_integration.gemini_generate", return_value="security report")
     def test_security_analyst_analyze_security(self, mock_gemini):
         agent = SecurityAnalystAgent()

@@ -25,10 +25,16 @@ class AgentOrchestrator:
           1. Generate user stories from business requirements.
           2. Generate design based on the user stories.
           3. Generate code from user stories and design.
+<<<<<<< HEAD
           4. Generate test cases and execute tests on the code.
           5. Analyze code for security vulnerabilities.
           6. Optimize code for performance.
           
+=======
+          4. Analyze code for security vulnerabilities.
+          5. Optimize code for performance.
+          6. Generate test cases and execute tests on the code.
+>>>>>>> 8c98a45e5eb9065ca0c0e17ed1257c0f24e89ea5
         Returns a dictionary containing outputs from each stage.
         """
         results = {}
