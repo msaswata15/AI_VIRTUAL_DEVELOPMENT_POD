@@ -429,7 +429,7 @@ def main():
         
         display_artifact("Generated User Stories", user_stories)
         display_artifact("Generated Design Artifact", design_artifact)
-        display_artifact("Generated Source Code", code_result, language='java')
+        display_artifact("Generated Source Code", code_result, language='python')
         display_artifact("Generated Test Cases", test_cases)
         display_artifact("Test Execution Results", test_results)
         display_artifact("Security Analysis Report", security_analysis)
