@@ -31,6 +31,9 @@ class TestServices(unittest.TestCase):
         self.assertEqual(results.get("code"), "dummy")
         self.assertEqual(results.get("test_cases"), "dummy")
         self.assertEqual(results.get("test_results"), "dummy")
-
+        self.assertEqual(results.get("security_report"), "dummy")
+        self.assertEqual(results.get("performance_report"), "dummy")
+        # Check if all steps are called
+        
 if __name__ == '__main__':
     unittest.main()
