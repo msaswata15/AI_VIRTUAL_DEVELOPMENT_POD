@@ -96,6 +96,4 @@ cython_debug/
 # Windows files
 Thumbs.db
 
-# Environment variables
-.env
-.env.*
+
