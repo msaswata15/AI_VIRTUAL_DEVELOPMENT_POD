@@ -23,50 +23,6 @@ This project is designed to:
 - **Integrated Environment:**  
   All configurations are managed via environment variables, ensuring seamless integration and deployment
 
-## Folder Structure
-
-ai_virtual_dev_pod/
-├── agents/
-│   ├── __init__.py                   # Imports all agent classes.
-│   ├── business_analyst_agent.py     # Creates user stories from high-level requirements.
-│   ├── design_agent.py                # Generates software design artifacts and diagrams.
-│   ├── developer_agent.py             # Generates production-quality source code.
-│   ├── testing_agent.py               # Generates and executes test cases.
-│   ├── security_analyst_agent.py      # Provides security analysis and recommendations.
-│   └── performance_agent.py           # Provides performance optimization recommendations.
-├── config/
-│   ├── __init__.py                   # Imports all configuration settings.
-│   └── settings.py                   # Global configuration (API keys, Pinecone, Langchain, CrewAI, etc.)
-├── data/
-│   ├── artifacts_templates/          # Templates for project artifacts.
-│   │   ├── user_stories_template.md
-│   │   ├── design_template.md
-│   │   ├── code_template.py
-│   │   └── test_cases_template.md
-│   └── requirements/                 # Business requirements and related documentation.
-│       └── business_requirements.txt
-├── interfaces/
-│   ├── __init__.py                   # Initializes the interfaces module.
-│   └── streamlit_app.py              # Main Streamlit UI for the Project Manager.
-├── services/
-│   ├── __init__.py                   # Imports all service modules.
-│   ├── agent_orchestration.py        # Orchestrates the multi-agent workflow using CrewAI.
-│   ├── crewai_integration.py         # Integrates with CrewAI for agent communication.
-│   └── language_model_integration.py # Wraps Gemini API calls for text generation.
-├── tests/
-│   ├── __init__.py                   # Initializes the tests module.
-│   ├── test_agents.py                # Unit tests for agent logic.
-│   ├── test_services.py              # Unit tests for service integrations.
-│   └── test_ui.py                    # Tests for Streamlit UI functionality.
-├── utils/
-│   ├── __init__.py                   # Initializes the utilities module.
-│   ├── helper_functions.py           # Common utility functions.
-│   └── logger.py                     # Logging utilities.
-├── .env                            # Environment variables (API keys, etc.)
-├── requirements.txt                # Python dependencies.
-├── README.md                       # Project documentation and setup instructions.
-└── main.py                         # Entry point to launch the orchestration and Streamlit UI.
-```
 
 ## Installation
 
