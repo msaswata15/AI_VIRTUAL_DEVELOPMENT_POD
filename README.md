@@ -21,7 +21,7 @@ This project is designed to:
 - **Definitive, Sure-Shot Responses:**  
   All agents generate responses that are clear, complete, and free of placeholders or uncertainty.
 - **Integrated Environment:**  
-  All configurations are managed via environment variables, ensuring seamless integration and deployment.
+  All configurations are managed via environment variables, ensuring seamless integration and deployment
 
 ## Folder Structure
 
